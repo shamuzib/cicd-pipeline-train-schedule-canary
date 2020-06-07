@@ -14,7 +14,7 @@ spec:
     
 ---
 
-apiVersion: apps/v1
+apiVersion: extensions/v1beta
 kind: Deployment
 metadata:
   name: train-schedule-deployment-canary
@@ -26,13 +26,13 @@ spec:
     matchLabels:
       app: train-schedule
       track: canary
-  templates:
+  template:
     metadata:
       labels:
         app: train-schedule
         track: canary
     spec:
-      container:
+      containers:
       - name: train-schedule
         image: $DOCKER_IMAGE_NAME:$BUILD_NUMBER
         ports:
